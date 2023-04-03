@@ -162,15 +162,15 @@ ssh -i <key file> ubuntu@<host name>
 sudo bio sup status | tail +2 | awk '$0=$1' | sudo xargs -n1 bio svc stop
 
 # 作成した Chef Habitat パッケージのインストール
-sudo bio pkg install kou029w/reticulum
+sudo bio pkg install angelcabrera-nr/reticulum
 
-# サービス mozillareality/reticulum を kou029w/reticulum に置換
+# サービス mozillareality/reticulum を angelcabrera-nr/reticulum に置換
 sudo bio svc unload mozillareality/reticulum
 sleep 10 # …アンロードするまで数秒待機
-sudo bio svc load kou029w/reticulum
+sudo bio svc load angelcabrera-nr/reticulum
 
 # 起動スクリプトの改変: kou029w/reticulum を読み込んで実行されるように変更
-sudo perl -i -pe 's(\b(mozillareality/reticulum)\b)(kou029w/reticulum)g' /opt/polycosm/polycosm_boot.sh
+sudo perl -i -pe 's(\b(mozillareality/reticulum)\b)(angelcabrera-nr/reticulum)g' /opt/polycosm/polycosm_boot.sh
 
 # 起動スクリプトの改変: 起動スクリプト実行時のインスタンス名の変更に伴う証明書の更新対応
 sudo perl -i -pe 's/^(ln -s)\b/ln -sf/' /opt/polycosm/polycosm_boot.sh
